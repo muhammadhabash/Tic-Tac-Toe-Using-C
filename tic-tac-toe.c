@@ -48,8 +48,8 @@
 
 uint8_t extract_numbers (uint8_t* au8_Line)
 {
-	uint8_t u8_Index, u8_Number = 0, u8_Weight = 0;
-	u8_Weight = strlen(au8_Line) - 2;
+	uint8_t u8_Index, u8_Number = 0, u8_Weight;
+	u8_Weight = strlen(au8_Line) - 2;  
 	for(u8_Index = 0 ; u8_Index < strlen(au8_Line) - 1 ; u8_Index++)
 	{
 	    u8_Number += ( (au8_Line[u8_Index] - '0' ) * pow(10,u8_Weight) );
@@ -121,9 +121,9 @@ uint8_t check_input_is_digit (uint8_t* au8_Line)
 {
 	uint32_t u8_LiteralIndex;
 	
-	for(u8_LiteralIndex = 0 ; u8_LiteralIndex < strlen(au8_Line) ; u8_LiteralIndex++)
+	for(u8_LiteralIndex = 0 ; u8_LiteralIndex < strlen(au8_Line) - 1 ; u8_LiteralIndex++)
 	{
-		if (*(au8_Line+u8_LiteralIndex) >='A'	&& *(au8_Line+u8_LiteralIndex) <= 'z')
+		if ( !((*(au8_Line+u8_LiteralIndex) >='0') && (*(au8_Line+u8_LiteralIndex) <= '9')) )
 		{
 			return 0;
 		}
